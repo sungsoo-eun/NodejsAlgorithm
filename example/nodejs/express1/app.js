@@ -3,6 +3,7 @@ var express = require('express')
   , app = express()
   , server = http.createServer(app);
 
+// app.get 은 라우팅 처리 함수
 app.get('/', function (req, res) {
   res.send('Hello /');
 });

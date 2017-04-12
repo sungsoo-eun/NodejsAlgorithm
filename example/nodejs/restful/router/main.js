@@ -1,3 +1,4 @@
+// module.exports 는 모듈을 생성하는 부분으로 다른 파일에서 require 할 수 있다.
 module.exports = function(app, fs)
 {
 

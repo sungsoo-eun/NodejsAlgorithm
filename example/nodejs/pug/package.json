@@ -1,0 +1,17 @@
+{
+  "name": "pug",
+  "version": "1.0.0",
+  "description": "pug test",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.2",
+    "pug": "^2.0.0-beta11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "author": "sungsoo.eun@posgen.net",
+  "license": "ISC"
+}
