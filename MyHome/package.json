@@ -1,5 +1,5 @@
 {
-  "name": "restful",
+  "name": "myhome",
   "version": "1.0.0",
   "scripts": {
     "prepublish": "zip -r target/my-home-123456789.zip node_modules data public router views manifest.json *.js"
