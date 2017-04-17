@@ -1,0 +1,15 @@
+{
+  "name": "mongoose",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "sungsoo.eun@posgen.net",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.4"
+  }
+}
