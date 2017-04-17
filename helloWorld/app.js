@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
     // 응답 정보 write
     res.write('Hello ');
     // 응답 정보 write+end
-    res.end('World!!\n');
+    res.end('World!\n');
 });
 
 server.listen(port, hostname, () => {
