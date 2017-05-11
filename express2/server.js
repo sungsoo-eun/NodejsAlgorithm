@@ -5,6 +5,7 @@ var router = require('./router/main')(app);
 // __dirname은 현재 파일 위치를 나타내는 Node.js 전역 변수
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+// ejs 엔진을 이용하여 html 처리
 app.engine('html', require('ejs').renderFile);
 
 var server = app.listen(3000, function(){

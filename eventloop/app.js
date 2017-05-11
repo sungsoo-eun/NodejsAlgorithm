@@ -12,7 +12,7 @@ var connectHandler = function connected(){
     eventEmitter.emit("data_received");
 }
 
-// connection 이벤트와 connectHandler 이벤트 핸들러를 연동
+// connection 이벤트와 connectHandler 이벤트 핸들러를 연동(binding)
 eventEmitter.on('connection', connectHandler);
 
 // data_received 이벤트와 익명 함수와 연동

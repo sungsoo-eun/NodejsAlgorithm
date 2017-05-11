@@ -2,6 +2,7 @@ module.exports = function(app, fs)
 {
 
      app.get('/',function(req, res){
+        // 세션 정보 취득
          var sess = req.session;
 
          res.render('index', {
@@ -13,8 +14,8 @@ module.exports = function(app, fs)
      });
 
     app.get('/login/:username/:password', function(req, res){
-        var sess;
-        sess = req.session;
+        // 세션 정보 취득
+         var sess = req.session;
 
         fs.readFile(__dirname + "/../data/user.json", "utf8", function(err, data){
             var users = JSON.parse(data);
@@ -31,6 +32,7 @@ module.exports = function(app, fs)
 
             if(users[username]["password"] == password){
                 result["success"] = 1;
+                // 세션 정보 셋팅
                 sess.username = username;
                 sess.name = users[username]["name"];
                 res.json(result);
@@ -44,8 +46,11 @@ module.exports = function(app, fs)
     });
 
     app.get('/logout', function(req, res){
-        sess = req.session;
+        // 세션 정보 취득
+         var sess = req.session;
+
         if(sess.username){
+            // 세션 정보 삭제
             req.session.destroy(function(err){
                 if(err){
                     console.log(err);

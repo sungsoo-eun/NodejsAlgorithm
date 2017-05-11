@@ -10,6 +10,8 @@ module.exports = function(app, fs)
 	});
 
     app.get('/list', function (req, res) {
+        console.log('/list');
+
 		fs.readFile( __dirname + "/../data/db.json", 'utf8', function (err, data) {
 			console.log( data );
 			var data = JSON.parse(data);
@@ -18,6 +20,12 @@ module.exports = function(app, fs)
     });
 
     app.get('/getUser/:userid', function(req, res){
+        console.log('/getUser/:userid');
+
+        console.log('query.userid='+req.query.userid);
+        console.log('body.userid='+req.body.userid);
+        console.log('params.userid='+req.params.userid);
+
 		// GET 방식은 req.query 를 사용하여 파라미터 정보 취득
         var userid = req.query.userid;
 		
@@ -33,9 +41,15 @@ module.exports = function(app, fs)
     });
 
     app.post('/addUser/:userid', function(req, res){
+        console.log('/addUser/:userid');
+
+        console.log('query.userid='+req.query.userid);
+        console.log('body.userid='+req.body.userid);
+        console.log('params.userid='+req.params.userid);
 
         var result = {  };
-        var userid = req.params.userid;
+		// POST 방식은 req.body 를 사용하여 파라미터 정보 취득
+        var userid = req.body.userid;
 
         // LOAD DATA & CHECK DUPLICATION
         fs.readFile( __dirname + "/../data/db.json", 'utf8',  function(err, data){
@@ -66,8 +80,14 @@ module.exports = function(app, fs)
 
 
     app.put('/mergeUser/:userid', function(req, res){
+        console.log('/mergeUser/:userid');
+
+        console.log('query.userid='+req.query.userid);
+        console.log('body.userid='+req.body.userid);
+        console.log('params.userid='+req.params.userid);
 
         var result = {  };
+		// PUT 방식은 req.body 를 사용하여 파라미터 정보 취득
         var userid = req.body.userid;
 
         // LOAD DATA
@@ -106,7 +126,14 @@ module.exports = function(app, fs)
 
 
     app.delete('/deleteUser/:userid', function(req, res){
+        console.log('/deleteUser/:userid');
+
+        console.log('query.userid='+req.query.userid);
+        console.log('body.userid='+req.body.userid);
+        console.log('params.userid='+req.params.userid);
+
         var result = { };
+		// DELETE 방식은 req.body 를 사용하여 파라미터 정보 취득
         var userid = req.body.userid;
 		
         //LOAD DATA
@@ -116,7 +143,6 @@ module.exports = function(app, fs)
 			var i = 0;
 			for (i = 0; i < data.users.length; i++) {
 				if(userid == data.users[i]["userid"]){
-					console.log('2='+  i );
 					// DELETE FROM DATA
 					// removed_items = arrayObject.splice(index, num_to_remove[, add1[, add2[, ...]]]);
 					// i번째 index에서 1개의 entry를 삭제
@@ -124,8 +150,7 @@ module.exports = function(app, fs)
 					break;
 				}
 			}
-			
-			//console.log('3='+  data.users.length +"/"+ i);
+
             // IF NOT FOUND
             if(data.users.length == i){
                 result["success"] = 0;

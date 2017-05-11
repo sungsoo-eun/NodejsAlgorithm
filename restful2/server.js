@@ -13,14 +13,15 @@ var server = app.listen(3000, function(){
  console.log("Express server has started on port 3000")
 });
 
-app.use(express.static('public'));
-
 // for parsing application/json
 app.use(bodyParser.json());
+//app.use(bodyParser());
 // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
  extended: true
 }));
+
+app.use(express.static('public'));
 
 app.use(session({
  secret: '@#@$MYSIGN#@$#$',
