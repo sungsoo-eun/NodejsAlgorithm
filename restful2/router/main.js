@@ -22,9 +22,9 @@ module.exports = function(app, fs)
     app.get('/getUser/:userid', function(req, res){
         console.log('/getUser/:userid');
 
-        console.log('query.userid='+req.query.userid);
+        console.log('query.userid='+req.query.userid);// ok
         console.log('body.userid='+req.body.userid);
-        console.log('params.userid='+req.params.userid);
+        console.log('params.userid='+req.params.userid);// ?
 
 		// GET 방식은 req.query 를 사용하여 파라미터 정보 취득
         var userid = req.query.userid;
@@ -44,8 +44,8 @@ module.exports = function(app, fs)
         console.log('/addUser/:userid');
 
         console.log('query.userid='+req.query.userid);
-        console.log('body.userid='+req.body.userid);
-        console.log('params.userid='+req.params.userid);
+        console.log('body.userid='+req.body.userid);// ok
+        console.log('params.userid='+req.params.userid);// ok
 
         var result = {  };
 		// POST 방식은 req.body 를 사용하여 파라미터 정보 취득
@@ -83,8 +83,8 @@ module.exports = function(app, fs)
         console.log('/mergeUser/:userid');
 
         console.log('query.userid='+req.query.userid);
-        console.log('body.userid='+req.body.userid);
-        console.log('params.userid='+req.params.userid);
+        console.log('body.userid='+req.body.userid);// ok
+        console.log('params.userid='+req.params.userid);// ok
 
         var result = {  };
 		// PUT 방식은 req.body 를 사용하여 파라미터 정보 취득
@@ -129,8 +129,8 @@ module.exports = function(app, fs)
         console.log('/deleteUser/:userid');
 
         console.log('query.userid='+req.query.userid);
-        console.log('body.userid='+req.body.userid);
-        console.log('params.userid='+req.params.userid);
+        console.log('body.userid='+req.body.userid);// ok
+        console.log('params.userid='+req.params.userid);// ?
 
         var result = { };
 		// DELETE 방식은 req.body 를 사용하여 파라미터 정보 취득
@@ -171,5 +171,11 @@ module.exports = function(app, fs)
         });
 
     });
+
+    // 등록되지 않은 패스에 대해 페이지 오류 응답
+    app.all('*', function (req, res) {
+        res.status(404).send('<h1>ERROR - 페이지를 찾을 수 없습니다.</h1>');
+    });
+
 
 }
